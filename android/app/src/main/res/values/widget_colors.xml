@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Palet widget layar utama — DISELARASKAN dengan desain utama app (Material
+  3 biru terang: AppGradients.hero #0B57A4, FinanceColors income/expense di
+  app/app_theme.dart), BUKAN lagi palet gelap "Nocturne" dari mockup asli
+  "Home Screen Widgets.dc.html". Semua layout/drawable widget mereferensi
+  nama warna di bawah lewat @color/widget_*, jadi peran tiap nama (bg card,
+  teks, aksen) dipertahankan — hanya NILAI-nya yang diganti ke terang agar
+  konsisten dengan Dashboard/Analisis/Pengaturan.
+-->
+<resources>
+    <color name="widget_bg">#F6F7FB</color>
+    <color name="widget_surface">#F5FFFFFF</color>
+    <color name="widget_text">#1A1C1E</color>
+    <color name="widget_text_muted">#996B7280</color>
+    <color name="widget_divider">#E4E6EC</color>
+    <color name="widget_accent">#0B57A4</color>
+    <!-- Ikon rekening (dompet/bank/e-wallet/lainnya) & ikon pemasukan di
+         atas lingkaran @color/widget_accent_800 — biru primer, bukan lagi
+         tint terang, karena lingkaran latarnya sekarang terang. -->
+    <color name="widget_accent_100">@color/widget_accent</color>
+    <!-- Latar lingkaran ikon rekening/pemasukan — kontainer biru muda,
+         menggantikan biru gelap Nocturne (dulu #423A6A). -->
+    <color name="widget_accent_800">#EAF1FB</color>
+    <!-- Ikon "Pengeluaran" di atas lingkaran @color/widget_neutral_800 —
+         merah expense (samakan dengan FinanceColors.expense di app_theme,
+         dipakai jadi warna expense di seluruh app: Analisis, Dashboard). -->
+    <color name="widget_neutral_100">#B20026</color>
+    <!-- Latar lingkaran ikon pengeluaran + track progress "Hari Ini" —
+         kontainer merah muda, menggantikan abu gelap Nocturne (dulu #3F424D). -->
+    <color name="widget_neutral_800">#FBEAEE</color>
+</resources>

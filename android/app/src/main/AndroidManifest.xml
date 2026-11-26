@@ -1,0 +1,98 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application
+        android:label="Transaction Journey"
+        android:name="${applicationName}"
+        android:icon="@mipmap/ic_launcher">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:taskAffinity=""
+            android:theme="@style/LaunchTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize">
+            <!-- Specifies an Android theme to apply to this Activity as soon as
+                 the Android process has started. This theme is visible to the user
+                 while the Flutter UI initializes. After that, this theme continues
+                 to determine the Window background behind the Flutter UI. -->
+            <meta-data
+              android:name="io.flutter.embedding.android.NormalTheme"
+              android:resource="@style/NormalTheme"
+              />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <!-- Don't delete the meta-data below.
+             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2" />
+
+        <!-- Widget layar utama "Saldo" (CRUD cepat +/- per rekening). -->
+        <receiver
+            android:name="com.personalfinance.transaction_journey.widget.SaldoWidgetProvider"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.personalfinance.transaction_journey.widget.ACTION_ADJUST_BALANCE" />
+                <action android:name="com.personalfinance.transaction_journey.widget.ACTION_CYCLE_STEP" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_saldo_info" />
+        </receiver>
+
+        <!-- Widget layar utama "Ringkasan Harian" (baca-cepat + refresh). -->
+        <receiver
+            android:name="com.personalfinance.transaction_journey.widget.RingkasanWidgetProvider"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="com.personalfinance.transaction_journey.widget.ACTION_REFRESH_RINGKASAN" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_ringkasan_info" />
+        </receiver>
+
+        <!-- Pembaca notifikasi otomatis (R9) — SEBELUMNYA TIDAK ADA sama
+             sekali, itu sebabnya fitur ini terasa diam tanpa error. Android
+             hanya mengaktifkan service ini setelah pengguna memberi izin
+             manual lewat Settings > Notification access (lihat
+             `NotificationBridge.openAccessSettings` / tombol di halaman
+             "Sumber Notifikasi"). -->
+        <service
+            android:name=".NotificationCaptureService"
+            android:exported="true"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
+            android:label="Transaction Journey - Pembaca Notifikasi">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
+    </application>
+    <!-- Biometric unlock (local_auth) — alternatif PIN di LockScreen. -->
+    <uses-permission android:name="android.permission.USE_BIOMETRIC"/>
+    <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
+
+    <!-- Pengingat notifikasi Skor Kesehatan Finansial (flutter_local_notifications)
+         — wajib di Android 13+ (API 33), diminta runtime saat pengguna
+         mengaktifkan toggle di halaman "Pengingat Kesehatan Finansial",
+         BUKAN saat app pertama dibuka. -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+
+    <!-- Required to query activities that can process text, see:
+         https://developer.android.com/training/package-visibility and
+         https://developer.android.com/reference/android/content/Intent#ACTION_PROCESS_TEXT.
+
+         In particular, this is used by the Flutter engine in io.flutter.plugin.text.ProcessTextPlugin. -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.PROCESS_TEXT"/>
+            <data android:mimeType="text/plain"/>
+        </intent>
+    </queries>
+</manifest>

@@ -1,0 +1,69 @@
+<!DOCTYPE html><html lang="id"><head>
+<title>Riwayat Transaksi</title>
+<!-- REFERENSI DESAIN USER - disederhanakan dari mockup Tailwind/M3 asli -->
+<body class="bg-background text-on-background pt-16 pb-24">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center h-16 bg-surface shadow-sm">
+<button>menu</button>
+<h1 class="font-bold text-primary">Riwayat Transaksi</h1>
+<button>calendar_today</button>
+</header>
+
+<main class="max-w-screen-md mx-auto px-4">
+<!-- Search and Filter Section -->
+<section class="mt-6 mb-8">
+<div class="relative w-full">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-[#F1F5F9] border-none rounded-xl py-3 pl-12 pr-4 focus:ring-2 focus:ring-primary focus:bg-white"
+ placeholder="Cari catatan, kategori, nominal..." type="text">
+</div>
+<div class="mt-4 flex items-center gap-3 overflow-x-auto pb-2">
+<!-- Tombol Filter + badge jumlah -->
+<button class="flex items-center gap-2 bg-primary-container text-on-primary-container px-4 py-2 rounded-full whitespace-nowrap shadow-sm">
+tune | Filter | [badge: 2]
+</button>
+<!-- Chip filter AKTIF (bisa ditutup X) -->
+<button class="px-4 py-2 rounded-full border border-primary text-primary bg-surface">
+Pemasukan [close]</button>
+<button class="px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant bg-surface">
+Rekening</button>
+<button class="px-4 py-2 rounded-full border border-primary text-primary bg-surface">
+Bulan Ini [close]</button>
+</div>
+</section>
+
+<!-- Transaction List : grup dengan header -->
+<section class="flex flex-col gap-6">
+<!-- Group: Hari Ini -->
+<div>
+<div class="flex justify-between items-end mb-3 border-b border-outline-variant pb-2">
+<h2 class="font-semibold text-on-surface">Hari Ini</h2>
+<span class="text-secondary font-semibold">+Rp 450.000</span>
+</div>
+<div class="bg-white rounded-xl shadow-sm overflow-hidden">
+<!-- Item -->
+<div class="flex items-center justify-between p-4 border-b">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-[#E8F5E9] flex items-center justify-center text-secondary">
+payments</div>
+<div>
+<h3 class="text-on-surface">Gaji Bulanan</h3>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-on-surface-variant">BCA</span>
+<span class="w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="text-outline">Gaji Oktober</span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<span class="text-secondary font-semibold block">+Rp 5.000.000</span>
+</div>
+</div>
+<!-- item expense serupa dgn bg #FFEBEE / restaurant / Tunai • Sate Ayam / -Rp50.000 -->
+</div>
+</div>
+<!-- Group: Kemarin (-Rp150.000, item local_gas_station Mandiri • Bensin) -->
+...
+</section>
+</main>
+</body></html>

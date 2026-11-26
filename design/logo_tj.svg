@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <!-- TransactionJourney app icon: monogram T+J saling mengunci, aksen
+       biru tema (seed #003C90, gradasi hero #0B57A4..#0A4B8C) dan hijau
+       income (#006C49) sebagai titik fokus. Komposisi:
+       - T putih di kiri: palang lebar + batang.
+       - J hijau di kanan: batangnya TURUN LEBIH DALAM lalu melengkung
+         ke kiri MELEWATI bawah batang T (lapisan J di depan), hook
+         naik di sisi kiri. Bagian yang melintas bawah memakai warna
+         hijau -> simbol "perjalanan/journey" yang terus berjalan. -->
+  <defs>
+    <linearGradient id="bg" x1="-0.6" y1="-1" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#0B57A4"/>
+      <stop offset="1" stop-color="#0A4B8C"/>
+    </linearGradient>
+    <linearGradient id="tj" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#D6E7FF"/>
+    </linearGradient>
+    <linearGradient id="jAccent" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#86EFAC"/>
+      <stop offset="1" stop-color="#006C49"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Latar squircle gradasi biru -->
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+
+  <!-- ===== J (hijau), digambar dulu supaya palang T berada DI DEPAN
+       persilangan di atas — memberi kedalaman. ===== -->
+  <!-- Batang J: x 300..352, dari y 154 (sejajar garis singgung sudut
+       palang, supaya transisi mulus tanpa step) turun ke 330, lalu
+       annulus setengah-bawah pusat (274,330) r 26..78, hook kiri naik
+       ke y 308. -->
+  <path d="M 300 154
+           h 52
+           v 176
+           a 78 78 0 0 1 -156 0
+           v -22
+           h 52
+           v 22
+           a 26 26 0 0 0 52 0
+           Z"
+        fill="url(#jAccent)"/>
+
+  <!-- ===== T (putih) di depan ===== -->
+  <!-- Palang: x 88..352 (menutup ujung atas batang J sepenuhnya),
+       y 128..180, radius 26. -->
+  <rect x="88" y="128" width="264" height="52" rx="26" fill="url(#tj)"/>
+  <!-- Batang T: x 190..242, y 128..324. -->
+  <rect x="190" y="128" width="52" height="196" rx="26" fill="url(#tj)"/>
+</svg>

@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Kartu "Saldo" — layout mengikuti Home Screen Widgets.dc.html,
+     tapi palet warna (@color/widget_*) diselaraskan ke desain utama app
+     (biru terang), bukan Nocturne gelap aslinya. Lihat widget_colors.xml.
+
+     Struktur: root TANPA padding — strip header gradient biru
+     (widget_header_bg, radius atas 14dp menyatu dengan kartu) mengisi
+     lebar penuh bagian atas, lalu body putih ber-padding di bawahnya.
+     (Tidak memakai trik margin negatif — itu rapuh di beberapa launcher.) -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/widget_card_bg">
+
+    <!-- Header gradient biru penuh (meniru AppBar app utama): kicker
+         "SALDO" putih + tombol tambah/kelola -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="14dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="10dp"
+        android:background="@drawable/widget_header_bg"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="SALDO"
+            android:textColor="#FFFFFF"
+            android:textSize="10sp"
+            android:letterSpacing="0.12"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/btn_saldo_add"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/iconbtn_on_accent_bg"
+            android:scaleType="centerInside"
+            android:padding="6dp"
+            android:tint="#FFFFFF"
+            android:contentDescription="Tambah rekening"
+            android:src="@drawable/ic_widget_plus" />
+
+        <ImageButton
+            android:id="@+id/btn_saldo_edit"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:background="@drawable/iconbtn_on_accent_bg"
+            android:scaleType="centerInside"
+            android:padding="6dp"
+            android:tint="#FFFFFF"
+            android:contentDescription="Kelola rekening"
+            android:src="@drawable/ic_widget_pencil" />
+    </LinearLayout>
+
+    <!-- Body putih -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="14dp">
+
+        <TextView
+            android:id="@+id/tv_saldo_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rp 0"
+            android:textColor="@color/widget_text"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <!-- Chip langkah +/- & kategori — tap nominal untuk siklus
+             500/1rb/2rb/3rb/5rb/10rb; tap kategori untuk siklus
+             "Tanpa kategori" -> kategori aktif. Berlaku untuk semua tombol
+             +/- rekening di bawah. -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Langkah tap +/-"
+                android:textColor="@color/widget_text_muted"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/tv_category_chip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
+                android:background="@drawable/iconbtn_bg"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:maxWidth="90dp"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="Tanpa kategori"
+                android:textColor="@color/widget_accent"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_step_chip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/iconbtn_bg"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:text="Rp 1.000"
+                android:textColor="@color/widget_accent"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Baris rekening 1 -->
+        <LinearLayout
+            android:id="@+id/row_account_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:paddingTop="6dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/iv_account_1_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/circle_accent_bg"
+                android:padding="7dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_widget_wallet" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_account_1_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/widget_text"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_account_1_balance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/widget_text_muted"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/btn_account_1_minus"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginEnd="6dp"
+                android:background="@drawable/iconbtn_bg"
+                android:scaleType="centerInside"
+                android:padding="7dp"
+                android:contentDescription="Kurangi saldo"
+                android:src="@drawable/ic_widget_minus" />
+
+            <ImageButton
+                android:id="@+id/btn_account_1_plus"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:background="@drawable/iconbtn_bg"
+                android:scaleType="centerInside"
+                android:padding="7dp"
+                android:contentDescription="Tambah saldo"
+                android:src="@drawable/ic_widget_plus" />
+        </LinearLayout>
+
+        <!-- Baris rekening 2 -->
+        <LinearLayout
+            android:id="@+id/row_account_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="6dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/iv_account_2_icon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/circle_accent_bg"
+                android:padding="7dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_widget_wallet" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_account_2_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/widget_text"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/tv_account_2_balance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/widget_text_muted"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/btn_account_2_minus"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginEnd="6dp"
+                android:background="@drawable/iconbtn_bg"
+                android:scaleType="centerInside"
+                android:padding="7dp"
+                android:contentDescription="Kurangi saldo"
+                android:src="@drawable/ic_widget_minus" />
+
+            <ImageButton
+                android:id="@+id/btn_account_2_plus"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:background="@drawable/iconbtn_bg"
+                android:scaleType="centerInside"
+                android:padding="7dp"
+                android:contentDescription="Tambah saldo"
+                android:src="@drawable/ic_widget_plus" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

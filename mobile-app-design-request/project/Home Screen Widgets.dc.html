@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="stylesheet" href="_ds/nocturne-fe5a9a8e-730b-4989-a63f-ed97e72b6a4f/styles.css">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{margin:0}
+.tj-widget{background:color-mix(in srgb, var(--color-surface) 92%, transparent);border:1px solid var(--color-divider);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);backdrop-filter:blur(6px)}
+.tj-iconbtn{display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:var(--radius-sm);border:1px solid var(--color-divider);background:transparent;color:var(--color-text);cursor:pointer;flex:none}
+.tj-iconbtn:hover{background:color-mix(in srgb, var(--color-text) 8%, transparent)}
+.tj-kicker{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--color-accent);font-family:var(--font-heading);font-weight:500}
+.tj-muted{color:color-mix(in srgb, var(--color-text) 55%, transparent)}
+</style>
+</helmet>
+
+<x-import component-from-global-scope="AndroidDevice" from="./android-frame.jsx" hint-size="390,844" width="390" height="844" dark="{{ true }}" style="flex:none">
+
+  <div style="position:relative;min-height:100%;background:radial-gradient(circle at 30% 15%, color-mix(in srgb, var(--color-accent) 16%, var(--color-bg)) 0%, var(--color-bg) 55%);padding:14px 14px 28px;display:flex;flex-direction:column;gap:16px;font-family:var(--font-body);color:var(--color-text)">
+
+    <div style="display:flex;justify-content:space-between;padding:2px 6px 8px">
+      <span style="font-size:13px;font-weight:500;font-family:var(--font-heading)">Selasa, 8 Sep</span>
+      <span style="font-size:13px;opacity:0.6">Beranda</span>
+    </div>
+
+    <!-- Widget 1: Saldo (balance CRUD) -->
+    <div class="tj-widget" style="padding:14px 14px 12px;display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <span class="tj-kicker">Saldo</span>
+        <div style="display:flex;gap:6px">
+          <button class="tj-iconbtn" aria-label="Tambah rekening"><i class="ph ph-plus" style="font-size:14px"></i></button>
+          <button class="tj-iconbtn" aria-label="Kelola"><i class="ph ph-pencil-simple" style="font-size:14px"></i></button>
+        </div>
+      </div>
+      <div style="font-family:var(--font-heading);font-weight:500;font-size:25px;letter-spacing:-0.01em">Rp 124.500.000</div>
+
+      <sc-for list="{{ accounts }}" as="acc" hint-placeholder-count="2">
+        <div style="display:flex;align-items:center;gap:10px;padding:6px 0;border-top:1px solid var(--color-divider)">
+          <div style="width:30px;height:30px;border-radius:50%;background:var(--color-accent-800);color:var(--color-accent-100);display:flex;align-items:center;justify-content:center;flex:none">
+            <i class="{{ acc.icon }}" style="font-size:15px"></i>
+          </div>
+          <div style="flex:1;min-width:0">
+            <div style="font-size:13px">{{ acc.name }}</div>
+            <div class="tj-muted" style="font-size:11px">{{ acc.balance }}</div>
+          </div>
+          <button class="tj-iconbtn" aria-label="Kurangi saldo {{ acc.name }}"><i class="ph ph-minus" style="font-size:13px"></i></button>
+          <button class="tj-iconbtn" aria-label="Tambah saldo {{ acc.name }}"><i class="ph ph-plus" style="font-size:13px"></i></button>
+        </div>
+      </sc-for>
+
+      <sc-if value="{{ quickAdjustOpen }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;align-items:center;gap:8px;padding:10px;margin-top:2px;border-radius:var(--radius-md);background:var(--color-bg);border:1px solid var(--color-divider)">
+          <span class="tj-muted" style="font-size:12px;flex:none">Sesuaikan Tunai</span>
+          <input class="tj-input" value="50.000" style="flex:1;min-width:0;background:var(--color-surface);border:1px solid var(--color-divider);border-radius:var(--radius-sm);color:var(--color-text);font-size:13px;padding:5px 8px" />
+          <button style="flex:none;border:1px solid var(--color-accent);color:var(--color-accent);background:transparent;border-radius:var(--radius-sm);padding:5px 10px;font-size:12px;font-family:var(--font-heading)">Simpan</button>
+        </div>
+      </sc-if>
+    </div>
+
+    <!-- Widget 2: Ringkasan Harian -->
+    <div class="tj-widget" style="padding:14px 14px 12px;display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <span class="tj-kicker">Hari Ini</span>
+        <i class="ph ph-arrows-clockwise tj-muted" style="font-size:14px"></i>
+      </div>
+
+      <div style="display:flex;gap:10px">
+        <div style="flex:1;display:flex;align-items:center;gap:8px">
+          <div style="width:30px;height:30px;border-radius:50%;background:var(--color-accent-800);color:var(--color-accent-100);display:flex;align-items:center;justify-content:center;flex:none">
+            <i class="ph ph-arrow-down-left" style="font-size:14px"></i>
+          </div>
+          <div style="min-width:0">
+            <div class="tj-muted" style="font-size:11px">Pemasukan</div>
+            <div style="font-size:15px;font-weight:500;font-family:var(--font-heading)">+Rp 350.000</div>
+          </div>
+        </div>
+        <div style="flex:1;display:flex;align-items:center;gap:8px">
+          <div style="width:30px;height:30px;border-radius:50%;background:var(--color-neutral-800);color:var(--color-neutral-100);display:flex;align-items:center;justify-content:center;flex:none">
+            <i class="ph ph-arrow-up-right" style="font-size:14px"></i>
+          </div>
+          <div style="min-width:0">
+            <div class="tj-muted" style="font-size:11px">Pengeluaran</div>
+            <div style="font-size:15px;font-weight:500;font-family:var(--font-heading)">-Rp 128.000</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="height:6px;border-radius:var(--radius-sm);overflow:hidden;display:flex;background:var(--color-neutral-800)">
+        <div style="width:{{ incomeShare }}%;background:var(--color-accent)"></div>
+      </div>
+
+      <div style="display:flex;align-items:center;justify-content:space-between;padding-top:2px">
+        <span style="font-size:12px">Bersih: <strong style="font-family:var(--font-heading);font-weight:500">+Rp 222.000</strong></span>
+        <span class="tj-muted" style="font-size:10px">Reset tengah malam</span>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:10px 10px 0;margin-top:6px">
+      <sc-for list="{{ dockIcons }}" as="app" hint-placeholder-count="4">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+          <div style="width:44px;height:44px;border-radius:var(--radius-lg);background:color-mix(in srgb, var(--color-text) 10%, transparent);display:flex;align-items:center;justify-content:center">
+            <i class="{{ app.icon }}" style="font-size:19px;opacity:0.85"></i>
+          </div>
+          <span class="tj-muted" style="font-size:9px">{{ app.label }}</span>
+        </div>
+      </sc-for>
+    </div>
+
+  </div>
+</x-import>
+
+<div style="max-width:640px;margin:28px auto 60px;padding:0 20px;font-family:var(--font-body);color:var(--color-text);display:flex;flex-direction:column;gap:14px">
+  <div class="tj-widget" style="padding:16px 18px;background:var(--color-surface)">
+    <div class="tj-kicker" style="margin-bottom:6px">Catatan Desain</div>
+    <p style="margin:0;font-size:13px;line-height:1.6;opacity:0.85">Dua widget layar utama untuk transaction_journey, memakai sistem desain Nocturne (dark, Inter, aksen blurple sebagai garis bukan flood). <strong>Saldo</strong> memberi CRUD cepat: stepper +/- per rekening membuka input inline untuk menyesuaikan saldo tanpa membuka aplikasi. <strong>Ringkasan Harian</strong> murni baca-cepat: pemasukan vs pengeluaran hari ini dan proporsinya, reset tiap tengah malam.</p>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:460,&quot;height&quot;:900},&quot;quickAdjustOpen&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Saldo widget&quot;},&quot;accounts&quot;:{&quot;editor&quot;:null,&quot;default&quot;:null,&quot;tsType&quot;:&quot;{name:string,balance:string,icon:string}[]&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const accounts = this.props.accounts ?? [
+      { name: 'BCA', balance: 'Rp 98.200.000', icon: 'ph ph-bank' },
+      { name: 'Tunai', balance: 'Rp 26.300.000', icon: 'ph ph-wallet' },
+    ];
+    const dockIcons = [
+      { label: 'Transaksi', icon: 'ph ph-receipt' },
+      { label: 'Analisis', icon: 'ph ph-chart-bar' },
+      { label: 'Tabungan', icon: 'ph ph-piggy-bank' },
+      { label: 'Atur', icon: 'ph ph-gear' },
+    ];
+    return {
+      accounts,
+      dockIcons,
+      quickAdjustOpen: this.props.quickAdjustOpen ?? true,
+      incomeShare: 73,
+    };
+  }
+}
+</script>
+</body>
+</html>

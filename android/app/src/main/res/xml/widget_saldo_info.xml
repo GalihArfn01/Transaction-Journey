@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  targetCellWidth/targetCellHeight menentukan KOTAK yang dialokasikan
+  launcher di layar utama (bukan ukuran konten sebenarnya) — layout-nya
+  sendiri (`widget_saldo.xml`) sudah `wrap_content` tinggi, jadi kalau
+  kotak yang dialokasikan lebih besar dari kontennya, sisanya jadi
+  ruang kosong yang kelihatan ganjil. Sebelumnya dipatok 4x2 (sama
+  persis dengan widget Ringkasan yang isinya jauh lebih pendek) —
+  terlalu lebar untuk kartu ini yang isinya cuma header + saldo + chip
+  langkah + 2 baris rekening. Diperkecil ke 3x2 supaya kotaknya lebih
+  pas dengan konten. `resizeMode` tetap horizontal|vertical supaya
+  pengguna yang mau kotak lebih besar masih bisa menariknya manual.
+-->
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minWidth="150dp"
+    android:minHeight="110dp"
+    android:targetCellWidth="3"
+    android:targetCellHeight="2"
+    android:updatePeriodMillis="0"
+    android:initialLayout="@layout/widget_saldo"
+    android:resizeMode="horizontal|vertical"
+    android:widgetCategory="home_screen"
+    android:previewLayout="@layout/widget_saldo"
+    android:description="@string/widget_saldo_description" />

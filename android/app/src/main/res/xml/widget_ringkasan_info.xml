@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Lihat catatan panjang di `widget_saldo_info.xml` — masalah & alasan
+  perbaikan yang sama persis. Widget INI kontennya justru PALING PENDEK
+  di antara keduanya (cuma 1 baris header, 1 baris pemasukan/pengeluaran,
+  progress bar tipis, dan 1 baris footer — tanpa baris rekening berulang
+  seperti widget Saldo), jadi `targetCellHeight` sebelumnya (2, sama
+  persis dengan widget Saldo yang jauh lebih tinggi kontennya) paling
+  boros ruang kosongnya. Diperkecil ke 3x1.
+-->
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minWidth="150dp"
+    android:minHeight="90dp"
+    android:targetCellWidth="3"
+    android:targetCellHeight="1"
+    android:updatePeriodMillis="0"
+    android:initialLayout="@layout/widget_ringkasan"
+    android:resizeMode="horizontal|vertical"
+    android:widgetCategory="home_screen"
+    android:previewLayout="@layout/widget_ringkasan"
+    android:description="@string/widget_ringkasan_description" />

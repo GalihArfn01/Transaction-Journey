@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Strip header gradient biru di atas kartu widget — meniru AppBar
+      gradient (AppGradients.hero, #0B57A4 -> #0A4B8C) yang jadi ciri khas
+      visual app utama. Radius atas 14dp SAMA PERSIS dengan widget_card_bg
+      supaya lengkungnya menyatu mulus: layout root kartu TANPA padding,
+      strip ini anak pertama (mengisi lebar penuh bagian atas), body
+      ber-padding jadi anak kedua (lihat widget_saldo.xml/widget_ringkasan.xml) —
+      radius bawah 0 karena menyambung rata ke body putih di bawahnya. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <gradient
+        android:angle="45"
+        android:startColor="@color/widget_accent"
+        android:endColor="#0A4B8C"
+        android:type="linear" />
+    <corners
+        android:topLeftRadius="14dp"
+        android:topRightRadius="14dp"
+        android:bottomLeftRadius="0dp"
+        android:bottomRightRadius="0dp" />
+</shape>

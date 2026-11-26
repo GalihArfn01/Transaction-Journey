@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="widget_saldo_description">Saldo &amp; penyesuaian cepat per rekening</string>
+    <string name="widget_ringkasan_description">Ringkasan pemasukan &amp; pengeluaran hari ini</string>
+</resources>

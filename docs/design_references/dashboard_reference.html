@@ -1,0 +1,188 @@
+<!DOCTYPE html><html lang="id" style=""><head><meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Ringkasan Keuangan</title>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#40000d",
+                        "tertiary-container": "#b20035",
+                        "on-primary-container": "#bcceff",
+                        "primary-container": "#0f52ba",
+                        "surface-bright": "#f8f9ff",
+                        "on-error": "#ffffff",
+                        "on-surface": "#0b1c30",
+                        "on-surface-variant": "#434653",
+                        "primary-fixed-dim": "#b0c6ff",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#0b1c30",
+                        "surface-variant": "#d3e4fe",
+                        "surface": "#f8f9ff",
+                        "primary": "#003c90",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#6cf8bb",
+                        "on-secondary-container": "#00714d",
+                        "surface-dim": "#cbdbf5",
+                        "tertiary-fixed-dim": "#ffb2b7",
+                        "secondary": "#006c49",
+                        "outline": "#737784",
+                        "surface-container-highest": "#d3e4fe",
+                        "tertiary": "#860026",
+                        "error": "#ba1a1a",
+                        "inverse-primary": "#b0c6ff",
+                        "error-container": "#ffdad6",
+                        "background": "#f8f9ff"
+                    },
+                    "fontSize": {
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-balance-mobile": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display-balance": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-lg text-body-lg min-h-screen flex flex-col pb-safe">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-padding-mobile h-16 bg-surface shadow-sm">
+<button aria-label="Menu"><span class="material-symbols-outlined">menu</span></button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Ringkasan Keuangan</h1>
+<button aria-label="Calendar"><span class="material-symbols-outlined">calendar_today</span></button>
+</header>
+<main class="flex-grow pt-[80px] pb-[80px] px-container-padding-mobile max-w-screen-xl mx-auto w-full flex flex-col gap-section-margin">
+<!-- Period Selector -->
+<section>
+<div class="flex overflow-x-auto no-scrollbar gap-2 py-2">
+<button class="px-4 py-2 rounded-full bg-primary-container text-on-primary-container font-label-caps whitespace-nowrap">Hari</button>
+<button class="px-4 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-caps whitespace-nowrap">Minggu</button>
+<button class="px-4 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-caps whitespace-nowrap">Bulan</button>
+<button class="px-4 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-caps whitespace-nowrap">Tahun</button>
+<button class="px-4 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-caps whitespace-nowrap">Semua</button>
+<button class="px-4 py-2 rounded-full bg-surface-container text-on-surface-variant font-label-caps whitespace-nowrap flex items-center gap-1">
+<span style="font-size: 16px;">tune</span> Kustom</button>
+</div>
+</section>
+<!-- Hero Summary - Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-card-gap">
+<!-- Total Saldo Hero -->
+<div class="md:col-span-3 lg:col-span-1 bg-primary text-on-primary rounded-xl p-6 shadow-md relative overflow-hidden h-full">
+<div class="absolute top-0 right-0 w-32 h-32 bg-white opacity-5 rounded-full -mr-10 -mt-10"></div>
+<div class="absolute bottom-0 left-0 w-24 h-24 bg-white opacity-5 rounded-full -ml-8 -mb-8"></div>
+<div>
+<p class="text-body-sm opacity-90 mb-1">Total Saldo</p>
+<h2 class="font-bold text-display-balance-mobile md:text-display-balance">Rp 124.500.000</h2>
+</div>
+<div class="mt-8 flex items-center gap-2">
+<span class="rounded-full p-1" style="font-size: 20px;">trending_up</span>
+<span class="text-body-sm text-secondary-container">+2.4% vs bulan lalu</span>
+</div>
+</div>
+<!-- Pemasukan / Pengeluaran / Saving Rate -->
+<div class="grid grid-cols-2 lg:grid-cols-1 md:col-span-3 lg:col-span-2 gap-3 w-full">
+<div class="bg-white rounded-xl p-3 shadow flex items-center gap-4">
+<div class="bg-green-100 p-3 rounded-lg text-secondary"><span>arrow_downward</span></div>
+<div><p class="text-body-sm text-on-surface-variant">Pemasukan</p>
+<p class="font-bold text-secondary">Rp 25.000.000</p></div>
+</div>
+<div class="bg-white rounded-xl p-3 shadow flex items-center gap-4">
+<div class="bg-red-100 p-3 rounded-lg text-error"><span>arrow_upward</span></div>
+<div><p class="text-body-sm text-on-surface-variant">Pengeluaran</p>
+<p class="font-bold text-error">Rp 12.500.000</p></div>
+</div>
+<div class="col-span-2 lg:col-span-1 bg-white rounded-xl p-4 shadow flex items-center gap-4">
+<div class="bg-blue-50 p-3 rounded-lg text-primary"><span>savings</span></div>
+<div class="flex-grow">
+<div class="flex justify-between mb-1">
+<p class="text-body-sm text-on-surface-variant">Saving Rate</p>
+<p class="font-semibold text-on-surface">50%</p>
+</div>
+<div class="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 50%;"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Category Breakdown -->
+<section>
+<h3 class="font-semibold text-on-surface mb-4">Analisis Pengeluaran</h3>
+<div class="bg-white rounded-xl p-4 shadow">
+<div class="space-y-4">
+<div>
+<div class="flex justify-between items-center mb-1">
+<div class="flex items-center gap-2">
+<span style="font-size: 18px;">restaurant</span>
+<span>Makanan &amp; Minuman</span>
+</div>
+<span class="font-semibold">Rp 4.500.000</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="flex-grow bg-gray-100 h-2 rounded-full overflow-hidden">
+<div class="bg-tertiary h-full rounded-full" style="width: 36%;"></div>
+</div>
+<span class="text-on-surface-variant w-8 text-right">36%</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Transactions -->
+<section class="pb-8">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-semibold text-on-surface">Transaksi Terbaru</h3>
+<button class="text-primary hover:underline">Lihat Semua</button>
+</div>
+<div class="bg-white rounded-xl shadow overflow-hidden">
+<ul class="divide-y divide-gray-100">
+<li class="p-4 flex items-center gap-4 cursor-pointer">
+<div class="bg-red-50 p-3 rounded-lg text-error"><span>restaurant</span></div>
+<div class="flex-grow">
+<p class="text-on-surface">Makan Siang</p>
+<p class="text-body-sm text-on-surface-variant">Hari ini, 12:30</p>
+</div>
+<div class="text-right">
+<p class="text-error font-semibold">-Rp 75.000</p>
+<p class="text-body-sm text-on-surface-variant">BCA</p>
+</div>
+</li>
+<li class="p-4 flex items-center gap-4 cursor-pointer">
+<div class="bg-green-50 p-3 rounded-lg text-secondary"><span>payments</span></div>
+<div class="flex-grow">
+<p class="text-on-surface">Gaji Bulanan</p>
+<p class="text-body-sm text-on-surface-variant">Kemarin, 09:00</p>
+</div>
+<div class="text-right">
+<p class="text-secondary font-semibold">+Rp 25.000.000</p>
+<p class="text-body-sm text-on-surface-variant">BCA</p>
+</div>
+</li>
+</ul>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface shadow-lg border-t border-outline-variant">
+<a class="flex flex-col items-center bg-primary-container text-on-primary-container rounded-xl px-3 py-1">
+  <span>home</span><span>Beranda</span></a>
+<a class="flex flex-col items-center text-on-surface-variant px-3 py-1">
+  <span>receipt_long</span><span>Transaksi</span></a>
+<div class="flex flex-col items-center">
+  <button class="-mt-10 bg-primary text-on-primary rounded-full w-16 h-16 shadow-lg">
+    <span style="font-size: 32px;">add</span></button>
+  <span class="mt-1">Tambah</span>
+</div>
+<a class="flex flex-col items-center text-on-surface-variant px-3 py-1">
+  <span>bar_chart</span><span>Analisis</span></a>
+<a class="flex flex-col items-center text-on-surface-variant px-3 py-1">
+  <span>settings</span><span>Pengaturan</span></a>
+</nav>
+</body></html>

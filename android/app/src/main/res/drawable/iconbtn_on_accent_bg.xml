@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Latar tombol ikon di atas header biru gradient — lingkaran putih
+     transparan (bukan @drawable/iconbtn_bg yang berbatas abu, karena itu
+     nyaris tak terlihat di atas latar biru). -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="oval">
+    <solid android:color="#26FFFFFF" />
+</shape>
